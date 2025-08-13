@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>gamerM</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div id="container">
+  <p id="mensagem">Será que você esta cadastrado?</p>
+  <input type="text" id="nome" placeholder="Digite seu nome">
+  <button id="botao" onclick="mensagem()">"verificar"</button>
+  <div>
+<script>
+  function mensagem(){
+ const men =document.getElementById("mensagem");
+ const nomeDigitado = 'moises';
+ const nome = document.getElementById("nome").value;
+ const bot= document.getElementById("botao");
+ if(nome == nomeDigitado){
+  men.innerHTML ="seja bem vindo"
+ }
+else{
+  men.innerHTML = "usuario não encontrado"
+}
+}
+</script>
+
+<body>
+ 
+
+</html>
