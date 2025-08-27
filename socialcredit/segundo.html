@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>social creditos</title>
+    <script src="log_rep.js"></script>
+</head>
+<body>
+    <header>
+        social creditos
+    </header>
+<ul>
+    
+    <li onclick="carregarCreditos('sorte')">social creditos01</li>
+    <li onclick="carregarCreditos('quasesote')">social creditos02</li>
+    <li onclick="carregarCreditos('azar')">social creditos03</li>
+</ul>    
+<div id="detalhes"></div>
+<footer>
+    只是補充業務<br>
+    <img id="imagem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScWHeHC59IlNghAdtyYRHFOWh8esnfm6ektA&s" alt=""><br>
+    <a href="https://i.pinimg.com/736x/45/6f/00/456f0057577cc709254d0a383ef9134f.jpg">mensagem secreta</a><br>   
+</footer>
+<script>
+    async function interacao(itens) {
+        
+    }
+</script>
+
+<style>
+ #imagem {
+            width: 70px;
+            transition: width 0.3s ease; /* animação suave para alteração de imagem */
+        }
+
+        #imagem:hover {
+            width: 90px; /* Quando o mouse passar sobre a imagem, ela aumenta de tamanho */
+        }
+
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 20px 0;
+            list-style-type: none;
+        }
+
+        li {
+            background-color: #f4f4f4;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #ddd;
+        }
+</style>
+</body>
+</html>
