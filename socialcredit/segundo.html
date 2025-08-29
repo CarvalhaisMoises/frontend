@@ -23,11 +23,26 @@
     <a href="https://i.pinimg.com/736x/45/6f/00/456f0057577cc709254d0a383ef9134f.jpg">mensagem secreta</a><br>   
 </footer>
 <script>
-    async function interacao(itens) {
+        /* */
+        async function carregarCreditos(itens){
+          try{
+            document.getElementById("detalhes").innerHTML="Carregando Creditos..."
+            await new Promise (soum => setTimeout(soum,2000));
+              let creditoscreditos = {
+                'sorte':"parabens, voce acaba de ganhar varios sociais credits",
+                'quasesorte':"voce acaba de ganhar poucos sociais credits",
+                'azar':"voce perdeu sociais credits"
+            };
+            document.getElementById("detalhes").innerHTML=creditoscreditos[itens]
+        }
+        catch(error){
+            document.getElementById("detalhes").innerHTML="error"+error.message;
+
+        }
         
     }
-</script>
-
+    
+    </script>
 <style>
  #imagem {
             width: 70px;
