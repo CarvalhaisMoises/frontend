@@ -24,31 +24,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
     <h1 id="titulo">Bem vindo!</h1>
     <p>Clique no botão para alterar a cor de acordo com o horário</p>
+    <p id="hora"></p>
+    <p id="data"></p>
     <button onclick="trocar()">mudar cor</button>
+
     <script>
         function trocar(){
-            const hora = new Date().getHours();
+            const agora = new Date();
+            const opcoes = { weekday: 'long', year:'numeric', month: 'long', day: 'numeric'};
+            const hora = agora.getHours();
+            const minutos = agora.getMinutes().toString().padStart(2, "0");
+            const dataFormada = agora.toLocaleDateString("pt-BR", opcoes);
+            // const dataFormada = agora.toLocaleDateString("pt-BR", )
             let cor;
             let mensagem;
-
+            
             if (hora>= 6 && hora< 12){
                 cor = "#FFD700";
                 mensagem = "bom dia! ☀️";
+            
             } else if (hora >=12 && hora < 18) {
                 cor = "#FF8C00";
                 mensagem = "Boa tarde 🌤️";
             }else if (hora >=18 && hora <23){
                 cor = "#1E90FF";
                 mensagem ="Hora de descançar!!🌙";
+        
+            }else { cor = "#ff0000";
+            mensagem = "Hora de descançar!";
             }
-
+            
             document.body.style.backgroundColor=cor;
             document.getElementById("titulo").innerHTML = mensagem;
-        }
+            document.getElementById("hora").innerHTML = hora + ":" + minutos;
+            document.getElementById("data").innerHTML = dataFormada;
+            }
     </script>
 </body>
 </html>
