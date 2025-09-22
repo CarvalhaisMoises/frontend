@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <style>
+      body {
+        transition: background-color 1s, color 1s; /* Transições de fundo e cor do texto */
+        font-family: Arial, sans-serif;
+        color: rgb(7, 7, 7);
+        text-align: center;
+        padding-top: 70px;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background-image 0.5s;
+        background-color: #fff; /* Cor padrão do fundo */
+        background-size: 100%;
+      }
+
+      
+      h1 {
+        font-size: 2.5rem;
+        margin: 20px 0;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin: 5px 0;
+      }
+
+      button {
+        padding: 12px 25px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s, transform 0.2s;
+        
+      }
+
+      button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      @media (max-width: 480px) {
+        body {
+          font-size: 16px;
+          padding-top: 50px;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 8px 16px;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+        #container {width: 70%;}
+      }
+
+      /* Estilo adicional para deixar o layout mais bonito */
+      .container {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+  
+</head>
+  <body>
+    <div class="container">
+    <h1 id="titulo"></h1>
+    <p id="data"></p>
+    <p id="hora"></p>
+    <p id="frase"></p>
+    <pi id="diaSemana"></p>
+        </div>
+
+    <script>
+
+// Array global para armazenar as frases conforme o período do dia
+
+let frase = [];
+
+function trocar() {
+    let agora = new Date();
+    let hora = agora.getHours();
+    const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dataFormatada = agora.toLocaleDateString("pt-BR", opcoes);
+    let minutos = agora.getMinutes().toString().padStart(2, "0");
+    let segundos = agora.getSeconds().toString().padStart(2, "0");
+    const diaSemana = agora.getDay();
+
+
+    let cor;
+    let mensagem;
+    let dia;
+    if (diaSemana >= 1 && diaSemana <=5){
+        dia = "Hoje é dia útil, foco nas atividades!";
+    } else{ 
+
+        dia = "Hoje é fim de semana, aproveite para descansar!";
+
+    }
+    if (hora >= 6 && hora < 12) {
+        image = "url('cedo.jpg')";
+        mensagem = "Bom dia!";
+        frase = [
+            "Manhã é para quem madruga.",
+            "Acorde com determinação, vá dormir com satisfação.",
+            "Cada manhã é uma nova oportunidade.",
+        ]
+    } else if (hora >= 12 && hora < 18) {
+        image = '#FF8C00';
+        mensagem = "Boa tarde!";
+        frase = [
+            "Tarde é para quem trabalha.",
+            "A tarde é uma criança que brinca com o sol.",
+            "Aproveite a tarde para recarregar suas energias.",
+        ]
+    } else if (hora >= 18 && hora < 23) {
+        image = "url('noite.jpg')";
+        mensagem = "Boa noite";
+        frase = [
+            "Noite é para quem sonha.",
+            "A noite é a parte do dia onde os sonhos ganham vida.",
+            "Aproveite a noite para relaxar e refletir sobre o dia.",
+        ]
+    }
+
+    document.body.style.backgroundImage = image;
+    document.getElementById("titulo").innerHTML = mensagem;
+
+
+
+    document.getElementById("hora").innerHTML = hora + ":" + minutos + ":" + segundos;
+    document.getElementById("data").innerHTML = dataFormatada;
+    document.getElementById("diaSemana").innerHTML = dia;
+
+
+
+}
+
+function trocarFrase() {
+    // esse if é para garantir que o array frase não está vazio
+    // se o array estiver vazio, não faz nada
+
+    if (frase.length > 0) {
+        // gera um índice aleatório baseado no tamanho do array de frases
+        // e usa esse índice para selecionar uma frase aleatória
+        // e exibe essa frase no elemento com id "frase"
+
+        const indiceAleatorio = Math.floor(Math.random() * frase.length);
+        document.getElementById("frase").innerHTML = frase[indiceAleatorio];
+    }
+}
+
+
+window.onload = function () {
+    trocar();
+    trocarFrase();
+    setInterval(trocar, 1000)
+    setInterval(trocarFrase, 5000);
+}
+    </script>
+<!-- indentificador para o navegador saber que se trata de uma PWA -->
+<script>
+    if ("serviceWorker" in navigator){
+        navigator.serviceWorker.register("service-worker.js")
+        .then(()=> console.log("Service Worker registrado"))
+        .catch(err => console.log(" Erro no SW:", err))
+    }
+</script>
+
+  </body>
+</html>
+
