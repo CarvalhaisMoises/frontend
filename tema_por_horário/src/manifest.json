@@ -17,9 +17,10 @@
         {
             "src": "icone-512.png",
             "sizes": "512x512",
-            "tyoe": "image/png"
+            "type": "image/png"
         }
     ]
 
 }
+
 
