@@ -1,3 +1,6 @@
+<!-- quem ta ai? -->
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -18,7 +21,7 @@
         background-repeat: no-repeat;
         transition: background-image 0.5s;
         background-color: #fff; /* Cor padrão do fundo */
-        background-size: 100%;
+        background-size: cover;
       }
 
       
@@ -53,6 +56,7 @@
       button:active {
         transform: scale(0.95);
       }
+      
 
       @media (max-width: 480px) {
         body {
@@ -141,7 +145,7 @@ function trocar() {
             "Cada manhã é uma nova oportunidade.",
         ]
     } else if (hora >= 12 && hora < 18) {
-        image = '#FF8C00';
+        image = "url('tarde.jpg')";
         mensagem = "Boa tarde!";
         frase = [
             "Tarde é para quem trabalha.",
